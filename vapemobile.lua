@@ -262,6 +262,99 @@ function v1:Window(v28, v29, v30)
             v41.CanvasSize = UDim2.new(0, 0, 0, v42.AbsoluteContentSize.Y)
             
             return v48
+            function v45:Checkbox(v46, v47, v48)
+                local v49 = Instance.new("TextButton")
+                v49.Name = "Checkbox"
+                v49.Parent = v41
+                v49.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    v49.Size = UDim2.new(0, 380, 0, 40)
+    v49.AutoButtonColor = false
+    v49.Text = ""
+
+    local v50 = Instance.new("UICorner")
+    v50.Name = "CheckboxCorner"
+    v50.Parent = v49
+    v50.CornerRadius = UDim.new(0, 5)
+
+    local v51 = Instance.new("TextLabel")
+    v51.Name = "CheckboxLabel"
+    v51.Parent = v49
+    v51.BackgroundTransparency = 1
+    v51.Position = UDim2.new(0.03, 0, 0, 0)
+    v51.Size = UDim2.new(0.7, 0, 1, 0)
+    v51.Font = Enum.Font.Gotham
+    v51.Text = v46
+    v51.TextColor3 = Color3.fromRGB(255, 255, 255)
+    v51.TextSize = 14   
+    v51.TextXAlignment = Enum.TextXAlignment.Left
+
+    local v52 = Instance.new("Frame")  
+    v52.Name = "CheckboxFrame"
+    v52.Parent = v49
+    v52.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    v52.Position = UDim2.new(0.85, 0, 0.25, 0)
+    v52.Size = UDim2.new(0, 40, 0, 20)
+
+    local v53 = Instance.new("UICorner")
+    v53.Name = "CheckboxFrameCorner"
+    v53.Parent = v52
+    v53.CornerRadius = UDim.new(1, 0)
+
+    local v54 = Instance.new("Frame")
+    v54.Name = "CheckboxToggle"
+    v54.Parent = v52
+    v54.BackgroundColor3 = Color3.fromRGB(120, 120, 120)
+    v54.Position = UDim2.new(0.1, 0, 0.1, 0)
+    v54.Size = UDim2.new(0, 16, 0, 16)
+
+    local v55 = Instance.new("UICorner")
+    v55.Name = "CheckboxToggleCorner"
+    v55.Parent = v54
+    v55.CornerRadius = UDim.new(1, 0)
+
+    local v56 = v47 or false
+
+    local function v57(v58)
+        v56 = v58
+        if v58 then
+            v3:Create(v54, TweenInfo.new(0.2), {
+                Position = UDim2.new(0.55, 0, 0.1, 0),
+                BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            }):Play()
+        else
+            v3:Create(v54, TweenInfo.new(0.2), {
+                Position = UDim2.new(0.1, 0, 0.1, 0),
+                BackgroundColor3 = Color3.fromRGB(120, 120, 120)
+            }):Play()
+        end
+        if v48 then pcall(v48, v56) end
+    end
+
+    v49.MouseEnter:Connect(function()
+        v3:Create(v49, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+    end)
+
+    v49.MouseLeave:Connect(function()
+        v3:Create(v49, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+    end)
+
+    v49.MouseButton1Click:Connect(function()
+        v57(not v56)
+    end)
+
+    v57(v56)
+
+    v41.CanvasSize = UDim2.new(0, 0, 0, v42.AbsoluteContentSize.Y)
+
+                local v59 = {}
+                function v59:Set(v60)
+                     v57(v60)
+                end
+                function v59:Get()
+                    return v56
+                end
+                return v59
+            end
         end
         
         return v45
