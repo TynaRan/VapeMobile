@@ -1,13 +1,13 @@
 local v1 = {
-    Configuration = {
-        ThemeColor = Color3.fromRGB(44, 120, 224),
-        ToggleKey = Enum.KeyCode.RightControl,
-        MobileTogglePosition = UDim2.new(0, 10, 0.5, -25),
-        WindowTitlePosition = UDim2.new(0.03, 0, 0.05, 0)
-    },
-    UI = {},
-    RainbowColorValue = 0,
-    HueSelectionPosition = 0
+Configuration = {
+ThemeColor = Color3.fromRGB(44, 120, 224),
+ToggleKey = Enum.KeyCode.RightControl,
+MobileTogglePosition = UDim2.new(0, 10, 0.5, -25),
+WindowTitlePosition = UDim2.new(0.03, 0, 0.05, 0)
+},
+UI = {},
+RainbowColorValue = 0,
+HueSelectionPosition = 0
 }
 
 local v2 = game:GetService("UserInputService")
@@ -64,61 +64,62 @@ v11.BackgroundTransparency = 1
 v11.Size = UDim2.new(1, 0, 0, 40)
 
 local function v12(v13, v14)
-    local v15, v16, v17, v18
-    local function v19(v20)
-        local v21 = v20.Position - v17
-        v14.Position = UDim2.new(v18.X.Scale, v18.X.Offset + v21.X, v18.Y.Scale, v18.Y.Offset + v21.Y)
-    end
-    v13.InputBegan:Connect(function(v22)
-        if v22.UserInputType == Enum.UserInputType.MouseButton1 or v22.UserInputType == Enum.UserInputType.Touch then
-            v15 = true
-            v17 = v22.Position
-            v18 = v14.Position
-        end
-    end)
-    v13.InputChanged:Connect(function(v23)
-        if v23.UserInputType == Enum.UserInputType.MouseMovement or v23.UserInputType == Enum.UserInputType.Touch then
-            v16 = v23
-        end
-    end)
-    v2.InputChanged:Connect(function(v24)
-        if v24 == v16 and v15 then v19(v24) end
-    end)
-    v2.InputEnded:Connect(function(v25)
-        if v25.UserInputType == Enum.UserInputType.MouseButton1 or v25.UserInputType == Enum.UserInputType.Touch then
-            v15 = false
-        end
-    end)
+local v15, v16, v17, v18
+local function v19(v20)
+local v21 = v20.Position - v17
+v14.Position = UDim2.new(v18.X.Scale, v18.X.Offset + v21.X, v18.Y.Scale, v18.Y.Offset + v21.Y)
+end
+v13.InputBegan:Connect(function(v22)
+if v22.UserInputType == Enum.UserInputType.MouseButton1 or v22.UserInputType == Enum.UserInputType.Touch then
+v15 = true
+v17 = v22.Position
+v18 = v14.Position
+end
+end)
+v13.InputChanged:Connect(function(v23)
+if v23.UserInputType == Enum.UserInputType.MouseMovement or v23.UserInputType == Enum.UserInputType.Touch then
+v16 = v23
+end
+end)
+v2.InputChanged:Connect(function(v24)
+if v24 == v16 and v15 then v19(v24) end
+end)
+v2.InputEnded:Connect(function(v25)
+if v25.UserInputType == Enum.UserInputType.MouseButton1 or v25.UserInputType == Enum.UserInputType.Touch then
+v15 = false
+end
+end)
 end
 
 v12(v11, v9)
 
 local v26 = false
 v8.MouseButton1Click:Connect(function()
-    v26 = not v26
-    if v26 then
-        v9.Visible = true
-        v9:TweenSize(UDim2.new(0, 550, 0, 350), "Out", "Quart", 0.3, true)
-    else
-        v9:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quart", 0.3, true)
-        wait(0.3)
-        v9.Visible = false
-    end
+v26 = not v26
+if v26 then
+v9.Visible = true
+v9:TweenSize(UDim2.new(0, 550, 0, 350), "Out", "Quart", 0.3, true)
+else
+v9:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quart", 0.3, true)
+wait(0.3)
+v9.Visible = false
+end
 end)
 
 v2.InputBegan:Connect(function(v27)
-    if v27.KeyCode == v1.Configuration.ToggleKey then
-        v26 = not v26
-        if v26 then
-            v9.Visible = true
-            v9:TweenSize(UDim2.new(0, 550, 0, 350), "Out", "Quart", 0.3, true)
-        else
-            v9:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quart", 0.3, true)
-            wait(0.3)
-            v9.Visible = false
-        end
-    end
+if v27.KeyCode == v1.Configuration.ToggleKey then
+v26 = not v26
+if v26 then
+v9.Visible = true
+v9:TweenSize(UDim2.new(0, 550, 0, 350), "Out", "Quart", 0.3, true)
+else
+v9:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quart", 0.3, true)
+wait(0.3)
+v9.Visible = false
+end
+end
 end)
+
 function v1:Window(v28, v29, v30)
 v1.Configuration.ThemeColor = v29 or v1.Configuration.ThemeColor
 v1.Configuration.ToggleKey = v30 or v1.Configuration.ToggleKey
@@ -354,6 +355,8 @@ function v59:Get()
 return v56
 end
 return v59
+end
+
 function v45:Slider(v46, v47, v48, v49, v50)
 local v51 = Instance.new("TextButton")
 v51.Name = "Slider"
@@ -567,6 +570,118 @@ v72.MouseButton1Click:Connect(v79)
 
 v41.CanvasSize = UDim2.new(0, 0, 0, v42.AbsoluteContentSize.Y)
 
+local v68 = {}
+function v68:Set(v69)
+local v70 = math.clamp(v69, v47, v48)
+local v71 = (v70 - v47)/(v48 - v47)
+v55.Size = UDim2.new(v71, 0, 1, 0)
+v56.Position = UDim2.new(v71, -6, 0.5, -6)
+v58.Text = tostring(v70)
+end
+function v68:Get()
+return tonumber(v58.Text)
+end
+return v68
+end
+
+function v45:Dropdown(v46, v47, v50)
+local v72 = Instance.new("TextButton")
+v72.Name = "Dropdown"
+v72.Parent = v41
+v72.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+v72.Size = UDim2.new(0, 380, 0, 40)
+v72.AutoButtonColor = false
+v72.Text = ""
+
+local v73 = Instance.new("UICorner")
+v73.Name = "DropdownCorner"
+v73.Parent = v72
+v73.CornerRadius = UDim.new(0, 5)
+
+local v74 = Instance.new("TextLabel")
+v74.Name = "DropdownLabel"
+v74.Parent = v72
+v74.BackgroundTransparency = 1
+v74.Position = UDim2.new(0.03, 0, 0, 0)
+v74.Size = UDim2.new(0.7, 0, 1, 0)
+v74.Font = Enum.Font.Gotham
+v74.Text = v46
+v74.TextColor3 = Color3.fromRGB(255, 255, 255)
+v74.TextSize = 14
+v74.TextXAlignment = Enum.TextXAlignment.Left
+
+local v75 = Instance.new("ImageLabel")
+v75.Name = "DropdownIcon"
+v75.Parent = v72
+v75.BackgroundTransparency = 1
+v75.Position = UDim2.new(0.9, 0, 0.25, 0)
+v75.Size = UDim2.new(0, 20, 0, 20)
+v75.Image = "rbxassetid://6031094667"
+v75.ImageColor3 = Color3.fromRGB(200, 200, 200)
+
+local v76 = Instance.new("ScrollingFrame")
+v76.Name = "DropdownList"
+v76.Parent = v72
+v76.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+v76.Position = UDim2.new(0, 0, 1, 5)
+v76.Size = UDim2.new(1, 0, 0, 0)
+v76.CanvasSize = UDim2.new(0, 0, 0, 0)
+v76.ScrollBarThickness = 3
+v76.Visible = false
+
+local v77 = Instance.new("UIListLayout")
+v77.Name = "DropdownListLayout"
+v77.Parent = v76
+v77.SortOrder = Enum.SortOrder.LayoutOrder
+
+local v78 = false
+local function v79()
+v78 = not v78
+if v78 then
+v76.Visible = true
+v76:TweenSize(UDim2.new(1, 0, 0, math.min(#v47 * 30, 150)), "Out", "Quad", 0.2, true)
+v3:Create(v75, TweenInfo.new(0.2), {Rotation = 180}):Play()
+else
+v76:TweenSize(UDim2.new(1, 0, 0, 0), "Out", "Quad", 0.2, true)
+v3:Create(v75, TweenInfo.new(0.2), {Rotation = 0}):Play()
+wait(0.2)
+v76.Visible = false
+end
+end
+
+for _, v80 in pairs(v47) do
+local v81 = Instance.new("TextButton")
+v81.Name = "DropdownOption"
+v81.Parent = v76
+v81.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+v81.Size = UDim2.new(1, 0, 0, 30)
+v81.AutoButtonColor = false
+v81.Text = v80
+v81.Font = Enum.Font.Gotham
+v81.TextColor3 = Color3.fromRGB(255, 255, 255)
+v81.TextSize = 14
+
+v81.MouseEnter:Connect(function()
+v3:Create(v81, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(60, 60, 60)}):Play()
+end)
+
+v81.MouseLeave:Connect(function()
+v3:Create(v81, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+end)
+
+v81.MouseButton1Click:Connect(function()
+v74.Text = v46..": "..v80
+if v50 then pcall(v50, v80) end
+v79()
+end)
+end
+
+v76.CanvasSize = UDim2.new(0, 0, 0, #v47 * 30)
+
+v72.MouseButton1Click:Connect(v79)
+
+v41.CanvasSize = UDim2.new(0, 0, 0, v42.AbsoluteContentSize.Y)
+
 local v82 = {}
 function v82:Set(v83)
 for _, v84 in pairs(v76:GetChildren()) do
@@ -643,10 +758,11 @@ return v88.Text
 end
 return v91
 end
-end
 
 return v45
 end
 
 return v35
 end
+
+return v1
